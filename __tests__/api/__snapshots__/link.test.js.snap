@@ -30,6 +30,10 @@ exports[`link tags Declarative API allows duplicate link tags if specified in th
 
 exports[`link tags Declarative API does not render tag when primary attribute is null 1`] = `"<link rel=\\"canonical\\" href=\\"http://localhost/helmet/component\\" data-rh=\\"true\\">"`;
 
+exports[`link tags Declarative API hrefLang 1`] = `"<link rel=\\"alternate\\" href=\\"http://localhost/helmet/1\\" hreflang=\\"x-default\\" data-rh=\\"true\\">"`;
+
+exports[`link tags Declarative API hrefLang 2`] = `"<link rel=\\"alternate\\" href=\\"http://localhost/helmet/1\\" data-rh=\\"true\\">"`;
+
 exports[`link tags Declarative API overrides duplicate link tags with a single link tag in a nested component 1`] = `"<link rel=\\"canonical\\" href=\\"http://localhost/helmet/innercomponent\\" data-rh=\\"true\\">"`;
 
 exports[`link tags Declarative API overrides single link tag with duplicate link tags in a nested component 1`] = `"<link rel=\\"canonical\\" href=\\"http://localhost/helmet/component\\" data-rh=\\"true\\">"`;

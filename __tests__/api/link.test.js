@@ -474,6 +474,40 @@ describe('link tags', () => {
       expect(firstTag.outerHTML).toMatchSnapshot();
     });
 
+    it('hrefLang', () => {
+      render(
+        <div>
+          <Helmet>
+            {/* eslint-disable-next-line react/no-unknown-property */}
+            <link rel="alternate" href="http://localhost/helmet/1" hreflang="x-default" />
+          </Helmet>
+          <Helmet>
+            <link rel="alternate" href="http://localhost/helmet/1" />
+          </Helmet>
+        </div>
+      );
+
+      const tagNodes = document.head.querySelectorAll(`link[${HELMET_ATTRIBUTE}]`);
+      const existingTags = [].slice.call(tagNodes);
+      const firstTag = existingTags[0];
+      const secondTag = existingTags[1];
+
+      expect(existingTags).toBeDefined();
+      expect(existingTags).toHaveLength(2);
+
+      expect(firstTag).toBeInstanceOf(Element);
+      expect(firstTag.getAttribute).toBeDefined();
+      expect(firstTag.getAttribute('rel')).toBe('alternate');
+      expect(firstTag.getAttribute('hreflang')).toBe('x-default');
+      expect(firstTag.getAttribute('href')).toBe('http://localhost/helmet/1');
+
+      expect(secondTag.getAttribute('rel')).toBe('alternate');
+      expect(secondTag.getAttribute('hreflang')).toBeNull();
+      expect(secondTag.getAttribute('href')).toBe('http://localhost/helmet/1');
+      expect(firstTag.outerHTML).toMatchSnapshot();
+      expect(secondTag.outerHTML).toMatchSnapshot();
+    });
+
     it("tags with rel='stylesheet' uses the href as the primary identification of the tag, regardless of ordering", () => {
       render(
         <div>
