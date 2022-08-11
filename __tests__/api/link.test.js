@@ -474,7 +474,7 @@ describe('link tags', () => {
       expect(firstTag.outerHTML).toMatchSnapshot();
     });
 
-    it('hrefLang', () => {
+    it('alternate tags with same links but different hreflang should not be merged', () => {
       render(
         <div>
           <Helmet>
